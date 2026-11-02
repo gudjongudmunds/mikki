@@ -15,6 +15,7 @@ APPENGINE_URL = os.getenv("APPENGINE_URL", "https://mikki-476800.ew.r.appspot.co
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    'mikki-3falltdev.pythonanywhere.com',
 ]
 
 # Application definition
@@ -109,12 +110,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-GS_BUCKET_NAME = os.getenv("GS_BUCKET_NAME", "mikki-media")
-
-if DEBUG:
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = BASE_DIR / 'media'
-else:
-    MEDIA_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
