@@ -1,0 +1,170 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="is">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Mikki{% endblock %}</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: white;
+            padding: 15px 30px;
+            border-bottom: 1px solid #ddd;
+
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo img {
+            height: 90px;
+            width: auto;
+        }
+
+        .company-info h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #1f2937;
+        }
+
+        .company-info p {
+            margin: 5px 0 0 0;
+            color: #6b7280;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            background-color: #1f2937;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            display: flex;
+        }
+
+        nav li {
+            margin: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px 25px;
+
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #374151;
+        }
+
+        nav a.active {
+            background-color: #2563eb;
+        }
+
+        /* CONTENT */
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+
+            background-color: #1f2937;
+            color: white;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        <a href="{% url 'index' %}">
+            <img src="{% static 'image/mhclogo.jpg' %}" alt="Mikki logo">
+        </a>
+    </div>
+
+    <div class="company-info">
+        <h1>Mikki</h1>
+        <p>Sérfræðingar í verkefnastjórnun og ráðgjöf</p>
+    </div>
+
+</header>
+
+<nav>
+
+    <ul>
+
+        <li>
+            <a href="{% url 'index' %}"
+               class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+               Forsíða
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'verkefni' %}"
+               class="{% if request.resolver_match.url_name == 'verkefni' %}active{% endif %}">
+               Verkefni
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'fyrirspurn' %}"
+               class="{% if request.resolver_match.url_name == 'fyrirspurn' %}active{% endif %}">
+               Fyrirspurn
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'umokkur' %}"
+               class="{% if request.resolver_match.url_name == 'umokkur' %}active{% endif %}">
+               Um okkur
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer>
+    © 2026 Mikki - Öll réttindi áskilin
+</footer>
+
+</body>
+</html>

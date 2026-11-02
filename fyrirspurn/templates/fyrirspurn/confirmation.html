@@ -1,0 +1,91 @@
+{% extends 'heim/base.html' %}
+
+{% block title %}Fyrirspurn móttekin{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .success-container {
+        max-width: 800px;
+        margin: 40px auto;
+        text-align: center;
+    }
+
+    .success-card {
+        background: white;
+        padding: 50px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .success-icon {
+        font-size: 4rem;
+        color: #16a34a;
+        margin-bottom: 20px;
+    }
+
+    .success-card h1 {
+        color: #1f2937;
+        margin-bottom: 20px;
+    }
+
+    .success-card p {
+        color: #6b7280;
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+
+    .home-btn {
+        display: inline-block;
+        margin-top: 30px;
+
+        padding: 14px 28px;
+
+        background-color: #2563eb;
+        color: white;
+
+        text-decoration: none;
+        border-radius: 8px;
+
+        transition: background-color 0.3s ease;
+    }
+
+    .home-btn:hover {
+        background-color: #1d4ed8;
+    }
+
+</style>
+
+<div class="success-container">
+
+    <div class="success-card">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h1>Fyrirspurn móttekin</h1>
+
+        <p>
+            Takk fyrir fyrirspurnina.
+        </p>
+
+        <p>
+            Fyrirspurnin þín hefur verið móttekin og við munum hafa
+            samband eins fljótt og auðið er.
+        </p>
+
+        <p>
+            Við kunnum að meta áhuga þinn og hlökkum til að aðstoða þig.
+        </p>
+
+        <a href="{% url 'index' %}" class="home-btn">
+            Til baka á forsíðu
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'heim/base.html' %}
+{% load static %}
+
+{% block title %}Um okkur{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .page-title {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .page-title h1 {
+        font-size: 2.5rem;
+        color: #1f2937;
+        margin-bottom: 10px;
+    }
+
+    .page-title p {
+        color: #6b7280;
+        font-size: 1.1rem;
+    }
+
+    .staff-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+    }
+
+    .staff-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+        transition: transform 0.3s ease;
+    }
+
+    .staff-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .staff-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+    margin: 20px auto 0 auto;
+
+    border: 4px solid #e5e7eb;
+}
+
+    .staff-content {
+        padding: 25px;
+    }
+
+    .staff-content h2 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: #1f2937;
+    }
+
+    .staff-title {
+        color: #2563eb;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .staff-content p {
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+</style>
+
+<div class="page-title">
+    <h1>Um okkur</h1>
+    <p>Kynntu þér starfsfólkið okkar og sérþekkingu þess.</p>
+</div>
+
+<div class="staff-list">
+
+    {% for staff in staff_members %}
+
+    <div class="staff-card">
+
+        {% if staff.image %}
+            <img src="{{ staff.image.url }}"
+                 alt="{{ staff.name }}"
+                 class="staff-image">
+        {% else %}
+            <img src="{% static 'images/default-person.jpg' %}"
+                 alt="{{ staff.name }}"
+                 class="staff-image">
+        {% endif %}
+
+        <div class="staff-content">
+
+            <h2>{{ staff.name }}</h2>
+
+            <div class="staff-title">
+                {{ staff.occupation }}
+            </div>
+
+            <p>
+                <strong>Menntun:</strong><br>
+                {{ staff.education }}
+            </p>
+
+            <p>
+                <strong>Reynsla:</strong><br>
+                {{ staff.experience }}
+            </p>
+
+            <p>
+                <strong>Netfang:</strong><br>
+                {{ staff.email }}
+            </p>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

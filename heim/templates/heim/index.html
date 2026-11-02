@@ -1,0 +1,162 @@
+{% extends 'heim/base.html' %}
+
+{% block title %}Forsíða{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .hero {
+        background: linear-gradient(135deg, #1f2937, #2563eb);
+        color: white;
+        padding: 80px 40px;
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto 30px;
+        line-height: 1.8;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 14px 28px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 5px;
+        transition: 0.3s;
+    }
+
+    .btn-primary {
+        background-color: white;
+        color: #2563eb;
+    }
+
+    .btn-primary:hover {
+        background-color: #f3f4f6;
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+
+    .services {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+    }
+
+    .service-card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .service-card h3 {
+        color: #1f2937;
+        margin-top: 0;
+    }
+
+    .service-card p {
+        color: #6b7280;
+        line-height: 1.7;
+    }
+
+    .about-section {
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    .about-section h2 {
+        color: #1f2937;
+    }
+
+    .about-section p {
+        max-width: 800px;
+        margin: auto;
+        line-height: 1.8;
+        color: #6b7280;
+    }
+
+</style>
+
+<div class="hero">
+
+    <h1>Velkomin á Mikki</h1>
+
+    <p>
+        Við veitum faglega ráðgjöf, verkefnastjórnun og sérhæfða þjónustu
+        með áherslu á gæði, áreiðanleika og árangur.
+    </p>
+
+    <a href="{% url 'fyrirspurn' %}" class="btn btn-primary">
+        Hafa samband
+    </a>
+
+    <a href="{% url 'umokkur' %}" class="btn btn-secondary">
+        Um okkur
+    </a>
+
+</div>
+
+<div class="services">
+
+    <div class="service-card">
+        <h3>Ráðgjöf</h3>
+
+        <p>
+            Fagleg ráðgjöf sem hjálpar fyrirtækjum og einstaklingum
+            að ná markmiðum sínum.
+        </p>
+    </div>
+
+    <div class="service-card">
+        <h3>Verkefnastjórnun</h3>
+
+        <p>
+            Skipulagning, framkvæmd og eftirfylgni verkefna með
+            skýrum markmiðum og árangri.
+        </p>
+    </div>
+
+    <div class="service-card">
+        <h3>Sérfræðiaðstoð</h3>
+
+        <p>
+            Lausnir sem byggja á reynslu, þekkingu og persónulegri þjónustu.
+        </p>
+    </div>
+
+</div>
+
+<div class="about-section">
+
+    <h2>Af hverju Mikki?</h2>
+
+    <p>
+        Markmið okkar er að veita framúrskarandi þjónustu sem skapar
+        raunverulegt virði fyrir viðskiptavini okkar. Við leggjum áherslu
+        á fagmennsku, traust og lausnamiðað vinnulag.
+    </p>
+
+</div>
+
+{% endblock %}

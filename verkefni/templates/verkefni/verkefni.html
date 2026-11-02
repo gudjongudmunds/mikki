@@ -1,0 +1,148 @@
+{% extends 'heim/base.html' %}
+{% load project_extras %}
+
+{% block title %}Verkefni{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .page-header h1 {
+        color: #1f2937;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .page-header p {
+        color: #6b7280;
+        font-size: 1.1rem;
+    }
+
+    .projects-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .project-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .project-content {
+        padding: 30px;
+    }
+
+    .project-content h2 {
+        margin-top: 0;
+        color: #1f2937;
+        margin-bottom: 20px;
+    }
+
+    .project-content p {
+        line-height: 1.8;
+        color: #4b5563;
+    }
+
+    .image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .image-gallery img {
+        width: 250px;
+        height: 180px;
+        object-fit: cover;
+
+        border-radius: 10px;
+
+        transition: transform 0.3s ease;
+    }
+
+    .image-gallery img:hover {
+        transform: scale(1.04);
+    }
+
+    .empty-projects {
+        text-align: center;
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+</style>
+
+<div class="page-header">
+
+    <h1>Verkefni</h1>
+
+    <p>
+        Hér má sjá dæmi um verkefni sem við höfum unnið að.
+    </p>
+
+</div>
+
+<div class="projects-container">
+
+{% for project in projects %}
+
+    <div class="project-card">
+
+        <div class="project-content">
+
+            {% if project.fyrirsogn %}
+                <h2>{{ project.fyrirsogn }}</h2>
+            {% endif %}
+
+            {% if project.texti1 %}
+                <p>{{ project.texti1 }}</p>
+            {% endif %}
+
+            {% if project.texti2 %}
+                <p>{{ project.texti2 }}</p>
+            {% endif %}
+
+            {% if project.texti3 %}
+                <p>{{ project.texti3 }}</p>
+            {% endif %}
+
+            <div class="image-gallery">
+
+                {% for img in project|project_images %}
+                    <img src="{{ img.url }}"
+                         alt="{{ project.fyrirsogn }}">
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% empty %}
+
+    <div class="empty-projects">
+
+        <h2>Engin verkefni skráð</h2>
+
+        <p>
+            Verkefni munu birtast hér þegar þeim hefur verið bætt við.
+        </p>
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

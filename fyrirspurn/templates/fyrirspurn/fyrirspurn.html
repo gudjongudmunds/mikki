@@ -1,0 +1,119 @@
+{% extends 'heim/base.html' %}
+
+{% block title %}Fyrirspurn{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .contact-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .contact-header h1 {
+        color: #1f2937;
+        margin-bottom: 10px;
+    }
+
+    .contact-header p {
+        color: #6b7280;
+        font-size: 1.1rem;
+    }
+
+    .contact-card {
+        background: white;
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .contact-card p {
+        margin-bottom: 20px;
+    }
+
+    .contact-card label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #374151;
+    }
+
+    .contact-card input,
+    .contact-card textarea,
+    .contact-card select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    .contact-card textarea {
+        min-height: 140px;
+    }
+
+    .submit-btn {
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        padding: 14px 30px;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: #1d4ed8;
+    }
+
+    .contact-info {
+        margin-top: 30px;
+        text-align: center;
+        color: #6b7280;
+    }
+
+</style>
+
+<div class="contact-container">
+
+    <div class="contact-header">
+        <h1>Sendu okkur fyrirspurn</h1>
+        <p>
+            Hafðu samband við okkur og við svörum eins fljótt og auðið er.
+        </p>
+    </div>
+
+    <div class="contact-card">
+
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="submit-btn">
+                Senda fyrirspurn
+            </button>
+
+        </form>
+
+    </div>
+
+    <div class="contact-info">
+
+        <p>
+            Við leggjum áherslu á skjót og fagleg svör við öllum fyrirspurnum.
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

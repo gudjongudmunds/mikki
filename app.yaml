@@ -1,0 +1,11 @@
+runtime: python311
+
+entrypoint: gunicorn -b :$PORT mikki.wsgi
+
+env_variables:
+  DEBUG: "True"
+  APPENGINE_URL: https://mikki-476800.ew.r.appspot.com
+  SECRET_KEY: "wfj39v#!xb629)&2pqm1)k0t*^0w(%q00n269n$7(-l&fml5kb"
+  DATABASE_URL: postgres://mikki-db-user:MB$dEa4s_m~~=1sM@localhost/mikki-db?host=/cloudsql/mikki-476800:europe-west1:mikki-instance
+  INSTANCE_CONNECTION_NAME: mikki-476800:europe-west1:mikki-instance
+
